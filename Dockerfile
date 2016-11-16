@@ -48,3 +48,8 @@ RUN set -x \
     && rmdir docker \
     && rm docker.tgz \
     && docker -v
+
+#### file ####
+
+RUN set -ex \
+    && apk add --no-cache file

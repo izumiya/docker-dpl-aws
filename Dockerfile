@@ -27,3 +27,8 @@ RUN apk add --no-cache \
         py-pip \
         zip \
     && pip install awscli --ignore-installed six
+
+#### rsync ####
+
+RUN set -ex \
+    && apk add --no-cache rsync

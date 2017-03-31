@@ -61,4 +61,5 @@ RUN set -ex \
     && gem install aws-sigv4 --version 1.0.0 --no-ri --no-rdoc \
     && gem install aws-sdk-core --version 2.9.0 --no-ri --no-rdoc \
     && gem install aws-sdk-resources --version 2.9.0 --no-ri --no-rdoc \
-    && gem install aws-sdk --version 2.9.0 --no-ri --no-rdoc
+    && gem install aws-sdk --version 2.9.0 --no-ri --no-rdoc \
+    && gem install mime-types --version 2.99.3 --no-ri --no-rdoc

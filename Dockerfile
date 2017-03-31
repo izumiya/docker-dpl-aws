@@ -53,3 +53,12 @@ RUN set -x \
 
 RUN set -ex \
     && apk add --no-cache file
+
+#### s3 deploy ####
+
+RUN set -ex \
+    && gem install jmespath --version 1.3.1 --no-ri --no-rdoc \
+    && gem install aws-sigv4 --version 1.0.0 --no-ri --no-rdoc \
+    && gem install aws-sdk-core --version 2.9.0 --no-ri --no-rdoc \
+    && gem install aws-sdk-resources --version 2.9.0 --no-ri --no-rdoc \
+    && gem install aws-sdk --version 2.9.0 --no-ri --no-rdoc

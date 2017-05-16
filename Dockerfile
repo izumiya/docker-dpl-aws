@@ -2,10 +2,10 @@ FROM ruby:alpine
 
 #### dpl ####
 
-ENV DPL_VERSION 1.8.32.travis.1901.6
-ENV NOKOGIRI_VERSION 1.6.8
-ENV AWS_SDK_VERSION 1.66.0
-ENV RUBY_ZIP_VERSION 1.2.0
+ENV DPL_VERSION 1.8.32
+ENV NOKOGIRI_VERSION 1.6.8.1
+ENV AWS_SDK_VERSION 2.6.32
+ENV RUBY_ZIP_VERSION 1.2.1
 
 RUN set -ex \
     && apk add --no-cache --virtual .dpl-builddeps \
@@ -16,7 +16,7 @@ RUN set -ex \
         make \
     && gem install nokogiri -v $NOKOGIRI_VERSION \
     && gem install dpl -v $DPL_VERSION \
-    && gem install aws-sdk-v1 -v $AWS_SDK_VERSION \
+    && gem install aws-sdk -v $AWS_SDK_VERSION \
     && gem install rubyzip -v $RUBY_ZIP_VERSION \
     && apk del .dpl-builddeps
 

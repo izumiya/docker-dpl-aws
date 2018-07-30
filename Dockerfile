@@ -2,9 +2,9 @@ FROM ruby:alpine
 
 #### dpl ####
 
-ENV DPL_VERSION 1.8.32
-ENV NOKOGIRI_VERSION 1.6.8.1
-ENV AWS_SDK_VERSION 2.6.32
+ENV DPL_VERSION 1.9.8
+ENV NOKOGIRI_VERSION 1.8.4
+ENV AWS_SDK_VERSION 3.0.1
 ENV RUBY_ZIP_VERSION 1.2.1
 
 RUN set -ex \
@@ -33,21 +33,10 @@ RUN apk add --no-cache \
 RUN set -ex \
     && apk add --no-cache rsync
 
-#### docker:1.11 + rwhub/ci_docker ####
+#### docker + rwhub/ci_docker ####
 
-ENV DOCKER_BUCKET get.docker.com
-ENV DOCKER_VERSION 1.11.2
-ENV DOCKER_SHA256 8c2e0c35e3cda11706f54b2d46c2521a6e9026a7b13c7d4b8ae1f3a706fc55e1
-
-RUN set -x \
-    && apk add --no-cache curl \
-    && curl -fSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-$DOCKER_VERSION.tgz" -o docker.tgz \
-    && echo "${DOCKER_SHA256} *docker.tgz" | sha256sum -c - \
-    && tar -xzvf docker.tgz \
-    && mv docker/* /usr/local/bin/ \
-    && rmdir docker \
-    && rm docker.tgz \
-    && docker -v
+RUN set -ex \
+    && apk add --no-cache docker
 
 #### file ####
 
@@ -57,9 +46,9 @@ RUN set -ex \
 #### s3 deploy ####
 
 RUN set -ex \
-    && gem install jmespath --version 1.3.1 --no-ri --no-rdoc \
-    && gem install aws-sigv4 --version 1.0.0 --no-ri --no-rdoc \
-    && gem install aws-sdk-core --version 2.9.0 --no-ri --no-rdoc \
-    && gem install aws-sdk-resources --version 2.9.0 --no-ri --no-rdoc \
-    && gem install aws-sdk --version 2.9.0 --no-ri --no-rdoc \
-    && gem install mime-types --version 2.99.3 --no-ri --no-rdoc
+    && gem install jmespath --version 1.4.0 --no-ri --no-rdoc \
+    && gem install aws-sigv4 --version 1.0.3 --no-ri --no-rdoc \
+    && gem install aws-sdk-core --version 3.22.1 --no-ri --no-rdoc \
+    && gem install aws-sdk-resources --version 3.22.0 --no-ri --no-rdoc \
+    && gem install aws-sdk --version 3.0.1 --no-ri --no-rdoc \
+    && gem install mime-types --version 3.1 --no-ri --no-rdoc

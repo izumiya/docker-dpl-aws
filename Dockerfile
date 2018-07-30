@@ -52,3 +52,8 @@ RUN set -ex \
     && gem install aws-sdk-resources --version 3.22.0 --no-ri --no-rdoc \
     && gem install aws-sdk --version 3.0.1 --no-ri --no-rdoc \
     && gem install mime-types --version 3.1 --no-ri --no-rdoc
+
+#### make ####
+
+RUN set -ex \
+    && apk add --no-cache make
